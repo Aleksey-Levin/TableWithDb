@@ -4,7 +4,7 @@ import Row from "./Row";
 import Context from "../Context";
 
 function Table(props) {
-    const {HeadersData, sortKey, sortOrder, includeStr, page, countRowInPage} = useContext(Context);
+    const {HeadersData, sortKey, sortOrder, includeStr, page, countRowInPage, setCountPage} = useContext(Context);
 
     const sortedData = useCallback(
         () => SortData(props.data, sortKey, sortOrder, includeStr),
@@ -25,6 +25,11 @@ function Table(props) {
     const paginatedTable = useMemo(() => {
         return sortedData().slice(startIndex, endIndex);
     }, [startIndex, endIndex, sortedData]);
+
+    // Вычисление количества страниц на основе количества поступающих данных
+    useEffect(()=>{
+        setCountPage(Math.ceil(sortedData().length / countRowInPage));
+        }, [props.data, countRowInPage, sortedData()]);
 
     return (
         <table>

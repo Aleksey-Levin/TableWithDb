@@ -13,16 +13,12 @@ const MainPage = () => {
     const [data, setData] = useState([]); // Данные таблицы
     const [page, setPage] = useState(0); // Номер текущей страницы
     const [includeStr, setIncludeStr] = useState(""); // Подстрока для проверки на её наличие в таблице (параметр CONTAINS и EQUAL)
-
+    const [countPage, setCountPage] = useState(0);
     const [sortKey, setSortKey] = useState(getConfigurate("start_sort_key")); // Ключ сортировки
     const [sortOrder, setSortOrder] = useState(getConfigurate("start_sort_order")); // Порядок сортировки + парметры CONTAINS и EQUAL для проверки на наличие и совпадение
 
     const countRowInPage = getConfigurate("COUNT_ROW_IN_PAGE"); // Количество строк на одной странице
 
-    // Вычисление количества страниц на основе количества поступающих данных
-    const countPage = useMemo(() => {
-        return Math.ceil([...data].length / countRowInPage);
-    }, [data, countRowInPage]);
 
     // Создание контекста
     const value = {
@@ -40,9 +36,11 @@ const MainPage = () => {
         setPage,
         countRowInPage,
         countPage,
+        setCountPage,
         includeStr,
         setIncludeStr,
-        data
+        data,
+        setData
     }
 
     useEffect(() => {
