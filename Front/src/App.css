@@ -1,0 +1,58 @@
+body {
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #4a79cf, #0058f0);
+    font-size: 20px;
+}
+
+table {
+    table-layout: fixed;
+    width: 60%;
+}
+
+thead{
+    color: white;
+}
+
+tbody {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: black;
+}
+
+tr {
+    width: 100%;
+}
+
+th,
+td {
+    padding: 1em 0.75em;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.sort-button {
+    background-color: transparent;
+    border: none;
+
+    padding: 0.25em 0.5em;
+    margin: 0;
+    line-height: 1;
+    font-size: 0.75em;
+    color: black;
+    cursor: pointer;
+
+    transition: transform 0.05s ease-out;
+}
+
+.sort-reverse {
+    transform: rotate(180deg);
+}
+
+.Main{
+    display: flex;
+    justify-content: space-around;
+    padding: 2em 0;
+    align-items: flex-start;
+}
